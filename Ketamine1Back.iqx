@@ -1,0 +1,228 @@
+﻿1-Back Actual Task
+
+Stim duration = 500
+Inter-stim interval = 1500
+Target range = 25%
+Block = 5 targets, 15 other stim
+Trial = 4 x blocks
+
+Cues - 2, 2, 3, 4, 4
+
+<data >
+/ columns = [subject, blockcode, trialcode, trialnum, latency, response, stimulusitem, values.cueselecter, values.targets, values.cue1back, values.cue2back, values.cue3back, values.cue4back, script.groupid] 
+</data>
+
+<values>
+/ cueselecter = 0
+/ targets = 0
+/ cue1back = 0
+/ cue2back = 0
+/ cue3back = 0
+/ cue4back = 0
+</values>
+
+<monkey >
+/ percentcorrect = 75
+/ latencydistribution = normal(500, 100)
+</monkey>
+**************************************************************************************************************************************************************************
+
+<expt >
+/ preinstructions =(page1, page2)
+/ postinstructions =  (page3)
+/ blocks = [1=blank;2-6=noreplace(twocue, twocue, threecue,fourcue,fourcue); 
+7=blank2; 8-12=noreplace(twocue, twocue, threecue,fourcue,fourcue); 
+13=blank2; 14-18=noreplace(twocue, twocue, threecue,fourcue,fourcue); 
+19=blank2; 20-24=noreplace(twocue, twocue, threecue,fourcue,fourcue)]
+</expt>
+
+<page page1>
+^In this task you will see letters on the screen.
+^^You need to remember the letter that was on the screen ONE letter ago.
+^^If the letter on the screen now is the same as the letter that was on the screen ONE letter ago you need to press the SPACEBAR.
+</page>
+
+<page page2>
+^e.g. the following letter sequence occurs:
+^A, P, J, E, E, L, H, I, I, D, C, M, M,
+^^It would be correct to press the SPACEBAR at the points marked with asterixis.
+^A, P, J, E, E*, L, H, I, I*,D, C, M, M*
+^^There is no break after you press the SPACEBAR. 
+^When you press continue the task will begin.
+</page>
+
+<page page3>
+^This completes the task. 
+^^Please go and get your experimenter.
+</page>
+
+*****************************************************************
+<block blank>
+/ trials =[1=blank]
+</block>
+
+<block blank2>
+/ trials =[1=blank2]
+</block>
+
+<block twocue>
+/ trials =[1-2=cue; 3=targets]
+</block>
+
+<block threecue>
+/ trials =[1-3=cue; 4=targets]
+</block>
+
+<block fourcue>
+/ trials =[1-4=cue; 5=targets]
+</block>
+
+<block fivecue>
+/ trials =[1-5=cue; 6=targets]
+</block>
+
+<block sixcue>
+/ trials =[1-6=cue; 7=targets]
+</block>
+*****************************
+
+<port targetsignal>
+/ port = LPT1
+/ subport = data
+/ items = ("00000001")
+/ erase = true("00000000")
+</port>
+
+<port cuesignal>
+/ port = LPT1
+/ subport = data
+/ items = ("00000010")
+/ erase = true("00000000")
+</port>
+
+<port responsesignal>
+/ port = LPT1
+/ subport = data
+/ items = ("00000011")
+/ erase = true("00000000")
+</port>
+
+*****************************
+
+<trial cue>
+/ ontrialbegin = [values.targets=counter.targets.selectedvalue; values.cueselecter=counter.cueselecter.selectedvalue]
+/ ontrialend = [values.cue4back=values.cue3back; values.cue3back=values.cue2back; values.cue2back=values.cue1back; values.cue1back=values.cueselecter]
+/ stimulustimes = [0=cue, cuesignal; 500=blankscreen]
+/ validresponse = (" ")
+/ correctresponse = (noresponse)
+/ responsemessage = (" ", responsesignal, 100)
+/ responseinterrupt = trial 
+/ trialduration = 2000
+/ responsetime = 30
+/ recorddata = true
+</trial>
+
+<trial targets>
+/ ontrialbegin = [values.targets=counter.targets.selectedvalue; values.cueselecter=counter.cueselecter.selectedvalue]
+/ ontrialend = [values.cue4back=values.cue3back; values.cue3back=values.cue2back; values.cue2back=values.cue1back; values.cue1back=values.targets]
+/ stimulustimes = [0=targets, targetsignal; 500=blankscreen]
+/ correctresponse = (" ")
+/ responsemessage = (" ", responsesignal, 100)
+/ validresponse = (noresponse)
+/ responseinterrupt = trial 
+/ trialduration = 2000
+/ responsetime = 30
+/ recorddata = true
+</trial>
+
+<trial blank>
+/ stimulustimes = [0=blankscreen]
+/ validresponse = (noresponse)
+/ trialduration = 1970
+/ recorddata = false
+</trial>
+
+<trial blank2>
+/ stimulustimes = [1=restingtime]
+/ validresponse = (" ")
+/ responsetime = 4000
+/ recorddata = false
+</trial>
+**************************************************************************************************************************************************************************
+<text cue>
+/ items = cues
+/ select = values.cueselecter
+/ fontstyle = ("Arial", 10%, true)
+/ position = (50%,50%)
+/ erase = false
+</text>
+
+<item cues>
+/ 1 = "A"
+/ 2 = "B"
+/ 3 = "C"
+/ 4 = "D"
+/ 5 = "E"
+/ 6 = "F"
+/ 7 = "G"
+/ 8 = "H"
+/ 9 = "I"
+/ 10 = "J"
+</item>
+
+<counter cueselecter>
+/ items = (1,2,3,4,5,6,7,8,9,10)
+/ select = noreplace
+/ not = (targets)
+/ selectionrate = trial
+</counter>
+
+
+<text targets>
+/ items = targets
+/ select = values.targets
+/ fontstyle = ("Arial", 10%, true)
+/ position = (50%,50%)
+/ erase = false
+</text>
+
+<item targets>
+/ 1 = "A"
+/ 2 = "B"
+/ 3 = "C"
+/ 4 = "D"
+/ 5 = "E"
+/ 6 = "F"
+/ 7 = "G"
+/ 8 = "H"
+/ 9 = "I"
+/ 10 = "J"
+</item>
+
+<counter targets>
+/ items = (1,2,3,4,5,6,7,8,9,10)
+/ select = values.cue1back
+/ selectionrate = trial
+</counter>
+
+
+<text blankscreen>
+/ items = ("     ")
+/ size = (50%,50%)
+/ position = (50%,50%)
+/ erase = false
+</text>
+
+<text restingtime>
+/ items = restingtime
+/ select = sequence
+/ size = (70%, 60%)
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 20pt)
+/ txbgcolor = white
+/ txcolor = black
+</text>
+
+<item restingtime>
+/ 1= "You will have a short 5 second break. After 5 seconds has elapsed, when you are ready to continue press SPACEBAR"
+</item>
