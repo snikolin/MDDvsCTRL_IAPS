@@ -1,0 +1,18 @@
+﻿<batch>
+/ file = "KetaminePractice.iqx"
+/ file = "KetamineEEG_EC.iqx"
+/ file = "IAPS_A.iqx"
+/ file = "KetamineEEG_EO.iqx"
+/ file = "Ketamine0Back.iqx"
+/ file = "Ketamine1Back.iqx"
+/ file = "Ketamine2Back.iqx"
+</batch>
+
+   Practice = 1 min
+Eyes Closed = 5 minutes
+	   IAPS = 7 minutes
+  Eyes Open = 5 minutes
+ 	 0-Back = 3 minutes
+	 1-Back = 3 minutes
+	 2-Back = 3 minutes
+	  TOTAL = 27 minutes

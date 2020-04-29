@@ -1,0 +1,192 @@
+﻿
+<data >
+/ columns = [date, group, time, subject] 
+</data>
+
+<defaults>
+/minimumversion = "4.0.5.0"
+/canvasaspectratio = (4,3)
+/quitcommand = (Ctrl+54)
+/screencolor = black
+</defaults>
+
+--------------------------------------------------
+
+<expt>
+/ blocks = [1=ListA]
+</expt>
+
+--------------------------------------------------
+
+<block ListA>
+/ trials =[1=instructions; 2-4=Unpleasant; 5-6=Neutral; 7= Unpleasant; 8=Neutral; 9-10=Unpleasant; 11=Neutral; 12=Unpleasant; 13= Neutral; 14-15=Unpleasant; 16-17=Neutral; 18-19=Unpleasant; 20=Neutral;
+21=Unpleasant; 22-23=Neutral; 24=Unpleasant; 25-27=Neutral; 28=Unpleasant; 29=Neutral; 30=Unpleasant; 31=Neutral; 32=Unpleasant; 33-35=Neutral; 36-37=Unpleasant; 38-39=Neutral; 40-42=Unpleasant; 
+43=Neutral; 44-46=Unpleasant; 47-49=Neutral; 50=Unpleasant; 51=Neutral; 52=Unpleasant; 53-55=Neutral; 56-57=Unpleasant; 58=instructions]
+</block>
+
+
+--------------------------------------------------
+
+<trial Neutral>
+/ stimulustimes = [0=neutralimage,neutralsignal; 5000=crossscreen, zerosignal]
+/ response = noresponse
+/ trialduration = 7000
+</trial>
+
+<trial Unpleasant>
+/ stimulustimes = [0=unpleasantimage,unpleasantsignal; 5000=crossscreen, zerosignal]
+/ response = noresponse
+/ trialduration = 7000
+</trial>
+
+<trial instructions>
+/ stimulustimes = [1=instructions]
+/ validresponse = (" ")
+/ recorddata = false
+</trial>
+
+--------------------------------------------------
+
+<picture neutralimage>
+/items = neutralA
+/select = sequence
+/position = (50%, 50%)
+/size = (52%,52%)
+</picture>
+
+<picture unpleasantimage>
+/items = unpleasantA
+/select = sequence
+/position = (50%, 50%)
+/size = (52%,52%)
+</picture>
+
+--------------------------------------------------
+
+<item neutralA>
+/1 = "2745.1.jpg"
+/2 = "7035.jpg"
+/3 = "7950.jpg"
+/4 = "7150.jpg"
+/5 = "A15.jpg"
+/6 = "A16.jpg"
+/7 = "5532.jpg"
+/8 = "2393.jpg"
+/9 = "7185.jpg"
+/10 = "A3.jpg"
+/11 = "A4.jpg"
+/12 = "5731.jpg"
+/13 = "7037.jpg"
+/14 = "7050.jpg"
+/15 = "7009.jpg"
+/16 = "2840.jpg"
+/17 = "A5.jpg"
+/18 = "5535.jpg"
+/19 = "A6.jpg"
+/20 = "7080.jpg"
+/21 = "2200.jpg"
+/22 = "2191.jpg"
+/23 = "2305.jpg"
+/24 = "7000.jpg"
+/25 = "7500.jpg"
+/26 = "7004.jpg"
+/27 = "7010.jpg"
+/28 = "A17.jpg"
+</item>
+
+<item unpleasantA>
+/1 = "6230.jpg"
+/2 = "2053.jpg"
+/3 = "A10.jpg"
+/4 = "2691.jpg"
+/5 = "6821.jpg"
+/6 = "9520.jpg"
+/7 = "A11.jpg"
+/8 = "2688.jpg"
+/9 = "2703.jpg"
+/10 = "A2.jpg"
+/11 = "2811.jpg"
+/12 = "2683.jpg"
+/13 = "2710.jpg"
+/14 = "6260.jpg"
+/15 = "A14.jpg"
+/16 = "A12.jpg"
+/17 = "3500.jpg"
+/18 = "2455.jpg"
+/19 = "2981.jpg"
+/20 = "2750.jpg"
+/21 = "6020.jpg"
+/22 = "A1.jpg"
+/23 = "A7.jpg"
+/24 = "6212.jpg"
+/25 = "6200.jpg"
+/26 = "9920.jpg"
+/27 = "A8.jpg"
+/28 = "A9.jpg"
+</item>
+
+--------------------------------------------------
+
+<item instructions>
+/1= "In this task you will see a series of pictures~n~n
+These pictures will contain everyday scenes and objects as well as pictures of some unpleasant scenes, similar to what you might see on the nightly news or on TV~n~n
+
+Please look at each picture for the entire time it is displayed~n~n
+
+When you are ready press SPACEBAR to begin"
+/2 = "This completes the task~n~n 
+Please wait until the experimenter tells you to commence the next task"
+</item>
+
+--------------------------------------------------
+
+<port neutralsignal>
+/ port = LPT1
+/ subport = data
+/ items = ("00000001")
+</port>
+
+<port unpleasantsignal>
+/ port = LPT1
+/ subport = data
+/ items = ("00000010")
+</port>
+COM5 may be needed to work on this computer instead of LPT1
+
+<port zerosignal>
+/ port = LPT1
+/ subport = data
+/ items = ("00000000")
+</port>
+--------------------------------------------------
+
+<text blankscreen>
+/ items = ("     ")
+/ size = (100%,100%)
+/ position = (50%,50%)
+/ txbgcolor = black
+/ txcolor = black
+</text>
+
+<text instructions>
+/ items = instructions
+/ select = sequence
+/ size = (70%, 60%)
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 20pt)
+/ txbgcolor = black
+/ txcolor = white
+</text>
+
+<text crossscreen>
+/ items = ("  +  ")
+/ fontstyle = ("Arial", 20%, true)
+/ halign = center
+/ valign = center
+/ vjustify = center
+/ hjustify = center
+/ size = (100%,100%)
+/ position = (45.5%,50%)
+/ txbgcolor = black
+/ txcolor = white
+</text>
