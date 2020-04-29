@@ -3,11 +3,11 @@
 INQUISIT:
 Inquisit software was used to run the experiment. 
 Tasks were presented in the following order:
-  2-back task practice
-  Eyes-closed resting state
-  IAPS
-  Eyes-open resting state
-  0-, 1-, and 2-back tasks
+  2-back task practice;
+  Eyes-closed resting state;
+  IAPS;
+  Eyes-open resting state;
+  0-, 1-, and 2-back tasks;
  
 The IAPS was delivered using three parallel lists with equivalent valence and arousal ratings (IAPS_A.iqx, IAPS_B.iqx, and IAPS_C.iqx). 
 
