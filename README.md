@@ -1,4 +1,4 @@
-# MDD participants compared to healthy age- and gender-matched controls
+# MDD participants compared to healthy age- and gender-matched controls on a test of emotional reactivity
 
 INQUISIT:
 Inquisit software was used to run the experiment. 
